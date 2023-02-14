@@ -1,0 +1,23 @@
+<table class="table">
+  <thead >
+    <tr>
+      <th>MARKA</th>
+    </tr>
+  </thead>
+  <td routerLink="/cars"
+    [class]="getAllBrandClass()"
+    (click)="brandIdChanges()"
+  >Tüm Markalar</td>
+  <tr *ngFor="let brand of brands">
+    <td
+    (click)="setCurrentBrand(brand)"
+    [class]="getCurrentBrandClass(brand)"
+    routerLink="/cars/brand/{{brand.brandId}}"
+    >
+
+    {{brand.brandName}}</td>
+  </tr>
+</table>
+<h5 *ngIf="currentBrand" >{{currentBrand.brandName}} seçtiniz</h5>
+
+
