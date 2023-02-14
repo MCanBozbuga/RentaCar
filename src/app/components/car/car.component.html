@@ -1,7 +1,7 @@
 <!-- <div  class="spinner-border" role="status">
   <span class="sr-only">Loading...</span>
 </div> -->
-<table class="table">
+<!-- <table class="table">
   <thead>
     <tr>
       <th>ARABA ADI</th>
@@ -18,5 +18,48 @@
     <td>{{car.brandName}}</td>
     <td>{{car.colorName}}</td>
   </tr>
-  <h1 *ngIf="!isData">KAYIT BULUNAMADI</h1>
-</table>
+
+</table> -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <select [(ngModel)]="brandFilter" class="form-select bg-dark border-white text-white" aria-label="Default select example">
+        <option value="0" selected>Markalar</option>
+        <option *ngFor="let brand of brands" [value]="brand.brandId">{{brand.brandName}}</option>
+      </select>
+    </div>
+    <div class="col-md-5">
+      <select [(ngModel)]="colorFilter" class="form-select bg-dark border-white text-white" aria-label="Default select example">
+        <option value="0" selected>Renkler</option>
+        <option *ngFor="let color of colors" [value]="color.colorId">{{color.colorName}}</option>
+      </select>
+    </div>
+    <div class="col-md-2" >
+      <button (click)="getCarDetailsByBrandIdAndColorId(brandFilter,colorFilter)" class="btn btn-dark">Filtrele</button>
+    </div>
+  </div>
+</div>
+<div class="row">
+    <p style="background-color: red; color:antiquewhite;" *ngIf="!isData">KAYIT BULUNAMADI</p>
+  <div class="col-md-4" *ngFor="let car of cars">
+    <div class="card" style="width: 18rem;">
+      <img [src]="getCarImage(car)" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h4 class="card-title text-center">{{car.carName |uppercase}} </h4>
+        <h6 class="text-center">{{car.brandName}} </h6>
+      </div>
+      <ul class="list-group list-group-flush text-center text-bolder">
+        <li class="list-group-item">Renk | {{car.colorName}}</li>
+        <li class="list-group-item"><i><b>Model Yılı</b></i> | {{car.carModelYear}}</li>
+        <li class="list-group-item"><i><b>Günlük Fiyat</b></i> | {{car.carDailyPrice | currency:"₺" }}</li>
+        <!-- <li class="list-group-item"><i><b>Aylık Fiyat</b></i> | {{car.carDailyPrice  | priceAdd:2000 |  currency:"₺"}}</li> -->
+
+      </ul>
+      <div class="card-body text-center">
+        <a href="#" class="btn btn-outline-primary" (click) = "setCurrentCarDetail(car)"  routerLink = "/cars/car-detail-page/{{car.carId}}">Detaya Git</a>
+      </div>
+    </div>
+    <br>
+  </div>
+
+</div>

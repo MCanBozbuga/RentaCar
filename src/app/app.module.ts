@@ -9,6 +9,9 @@ import { BrandComponent } from './components/brand/brand.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RentalComponent } from './components/rental/rental.component';
 import { ColorComponent } from './components/color/color.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [
@@ -22,7 +25,11 @@ import { ColorComponent } from './components/color/color.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

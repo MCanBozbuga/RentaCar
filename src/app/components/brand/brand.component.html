@@ -1,4 +1,4 @@
-<table class="table">
+<!-- <table class="table">
   <thead >
     <tr>
       <th>MARKA</th>
@@ -18,6 +18,33 @@
     {{brand.brandName}}</td>
   </tr>
 </table>
-<h5 *ngIf="currentBrand" >{{currentBrand.brandName}} seçtiniz</h5>
+<h5 *ngIf="currentBrand" >{{currentBrand.brandName}} seçtiniz</h5> -->
+
+
+<ul class="list-group">
+  <li
+  class="list-group-item text-center text-white bg-dark"
+  (click)="brandIdChanges()"
+  [class]="getAllBrandClass()" routerLink = "/cars">
+
+      MARKALAR
+
+  </li>
+
+  <li
+  class="list-group-item bg-light"
+  (click) = "setCurrentBrand(brand)"
+  routerLink = "/cars/brand/{{brand.brandId}}"
+  *ngFor = "let brand of brands"
+  [class] = "getCurrentBrandClass(brand)"
+  class="form-check-label">
+
+  {{brand.brandName}}
+
+  </li>
+
+
+</ul>
+
 
 
